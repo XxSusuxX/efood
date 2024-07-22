@@ -9,6 +9,7 @@ type ButtonProps = {
   type?: 'button' | 'reset' | 'submit'
   disabled?: boolean
   onClick?: () => void
+  children?: string
 }
 
 const Button = ({
@@ -19,7 +20,8 @@ const Button = ({
   to,
   type = 'button',
   disabled = false,
-  onClick
+  onClick,
+  children
 }: ButtonProps) => {
   if (kind === 'link') {
     return (
@@ -28,7 +30,7 @@ const Button = ({
         themeMode={themeMode}
         to={to as string}
       >
-        {placeholder}
+        {children || placeholder}
       </ButtonContainerLink>
     )
   }
@@ -41,7 +43,7 @@ const Button = ({
       type={type}
       disabled={disabled}
     >
-      {placeholder}
+      {children || placeholder}
     </ButtonContainer>
   )
 }
