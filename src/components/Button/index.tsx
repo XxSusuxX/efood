@@ -1,26 +1,48 @@
-import { ButtonContainer, ButtonLink } from './styles'
+import { ButtonContainer, ButtonContainerLink } from './styles'
 
-type Props = {
-  type: 'button' | 'link'
-  title: string
+type ButtonProps = {
+  kind: 'button' | 'link'
+  displayMode?: 'fullWidth' | 'inlineBlock'
+  themeMode: 'primary' | 'second'
+  placeholder: string
   to?: string
+  type?: 'button' | 'reset' | 'submit'
+  disabled?: boolean
   onClick?: () => void
-  children: string
 }
 
-const Button = ({ type, title, to, onClick, children }: Props) => {
-  if (type === 'button') {
+const Button = ({
+  kind,
+  placeholder,
+  displayMode = 'fullWidth',
+  themeMode = 'primary',
+  to,
+  type = 'button',
+  disabled = false,
+  onClick
+}: ButtonProps) => {
+  if (kind === 'link') {
     return (
-      <ButtonContainer type="button" title={title} onClick={onClick}>
-        {children}
-      </ButtonContainer>
+      <ButtonContainerLink
+        displayMode={displayMode}
+        themeMode={themeMode}
+        to={to as string}
+      >
+        {placeholder}
+      </ButtonContainerLink>
     )
   }
 
   return (
-    <ButtonLink to={to as string} title={title}>
-      {children}
-    </ButtonLink>
+    <ButtonContainer
+      onClick={onClick}
+      displayMode={displayMode}
+      themeMode={themeMode}
+      type={type}
+      disabled={disabled}
+    >
+      {placeholder}
+    </ButtonContainer>
   )
 }
 

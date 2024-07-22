@@ -1,25 +1,30 @@
 import styled from 'styled-components'
-import { Cores } from '../../style'
+import theme from '../../global/theme'
 
-export const Container = styled.footer`
-  background-color: ${Cores.fundoRodape};
+export const FooterContainer = styled.footer`
+  width: 100%;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 40px;
+  justify-content: center;
+  background: ${theme.Colors.primary};
 `
-export const Links = styled.ul`
-  margin-top: 32.5px;
-  margin-bottom: 40px;
-  a {
-    margin: 0 4px 4px;
+
+export const SocialIcons = styled.div`
+  display: flex;
+  gap: 8px;
+  margin: 32px auto 80px;
+
+  img {
+    width: 24px;
+    height: 24px;
   }
 `
 
 export const Text = styled.p`
-  font-size: 10px;
-  margin-top: 37px;
-  max-width: 480px;
-  width: 100%;
+  color: ${theme.Colors.text};
+  font-size: ${theme.fontSizes.body};
+  text-align: center;
+  font-weight: 400;
+  line-height: normal;
 `

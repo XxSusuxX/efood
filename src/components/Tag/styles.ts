@@ -1,15 +1,16 @@
 import styled from 'styled-components'
-import { Cores } from '../../style'
+import theme from '../../global/theme'
 
-type Props = {
-  destaque?: boolean
-}
-
-export const TagContainer = styled.div<Props>`
+export const TagContainer = styled.div`
   display: inline-block;
-  background-color: ${Cores.rosa};
-  color: ${Cores.branco};
+  margin-left: 8px;
+  padding: 6px 10px;
+  background-color: ${theme.Colors.text};
+`
+
+export const TagTitle = styled.h3`
+  color: ${theme.Colors.background};
+  text-align: center;
   font-size: 12px;
   font-weight: 700;
-  padding: 6px 4px;
 `

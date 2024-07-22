@@ -1,12 +1,15 @@
-import { TagContainer } from './styles'
+import { TagContainer, TagTitle } from './styles'
 
-export type Props = {
-  children: string
-  destaque?: boolean
+type TagProps = {
+  placeholder?: string
 }
 
-const Tag = ({ children, destaque }: Props) => (
-  <TagContainer destaque={destaque}>{children}</TagContainer>
-)
+const Tag = ({ placeholder }: TagProps) => {
+  return (
+    <TagContainer>
+      <TagTitle>{placeholder}</TagTitle>
+    </TagContainer>
+  )
+}
 
 export default Tag

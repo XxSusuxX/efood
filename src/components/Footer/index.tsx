@@ -1,31 +1,23 @@
-import { LogoImage } from '../Header/styles'
-import logo from '../../assets/images/logo.png'
-import instagram from '../../assets/images/Instagram.png'
-import facebook from '../../assets/images/Facebook.png'
-import twitter from '../../assets/images/Twitter.png'
-import { Container, Links, Text } from './styles'
+import Logo from '../Logo'
+import { SocialLinks } from '../../utils/list'
+
+import { FooterContainer, SocialIcons, Text } from './styles'
+import LogoImage from '../../assets/logo.png'
 
 const Footer = () => (
-  <Container>
-    <LogoImage src={logo} alt="EFOOD" />
-
-    <Links>
-      <a href="/">
-        <img src={instagram} alt="instagram" />
-      </a>
-      <a href="/">
-        <img src={facebook} alt="facebook" />
-      </a>
-      <a href="/">
-        <img src={twitter} alt="twitter" />
-      </a>
-    </Links>
+  <FooterContainer>
+    <Logo kind="link" cover={LogoImage} title="Logo eFood" to="/" />
+    <SocialIcons>
+      {SocialLinks.map((item) => (
+        <img src={item.icon} alt={item.title} key={item.id} />
+      ))}
+    </SocialIcons>
     <Text>
       A efood é uma plataforma para divulgação de estabelecimentos, a
       responsabilidade pela entrega, qualidade dos produtos é toda do
       estabelecimento contratado.
     </Text>
-  </Container>
+  </FooterContainer>
 )
 
 export default Footer
