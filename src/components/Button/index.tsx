@@ -4,12 +4,13 @@ type ButtonProps = {
   kind: 'button' | 'link'
   displayMode?: 'fullWidth' | 'inlineBlock'
   themeMode: 'primary' | 'second'
-  placeholder: string
+  placeholder?: string
   to?: string
   type?: 'button' | 'reset' | 'submit'
   disabled?: boolean
   onClick?: () => void
   children?: string
+  title?: string
 }
 
 const Button = ({
@@ -21,7 +22,8 @@ const Button = ({
   type = 'button',
   disabled = false,
   onClick,
-  children
+  children,
+  title
 }: ButtonProps) => {
   if (kind === 'link') {
     return (
@@ -29,6 +31,7 @@ const Button = ({
         displayMode={displayMode}
         themeMode={themeMode}
         to={to as string}
+        title={title}
       >
         {children || placeholder}
       </ButtonContainerLink>
@@ -42,6 +45,7 @@ const Button = ({
       themeMode={themeMode}
       type={type}
       disabled={disabled}
+      title={title}
     >
       {children || placeholder}
     </ButtonContainer>

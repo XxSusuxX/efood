@@ -39,6 +39,9 @@ const Product = ({
       </Avaliacao>
       <Descricao>{description}</Descricao>
       <Button
+        kind="button"
+        placeholder="Saiba mais"
+        themeMode="primary"
         type="button"
         to="/Product"
         title="Clique aqui para saber mais sobre o produto"
