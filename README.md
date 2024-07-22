@@ -1,7 +1,6 @@
 # 🏆 eFood
 ![GitHub repo size](https://img.shields.io/github/repo-size/BrunoOliveira16/efood?style=for-the-badge)
 ![Languages](https://img.shields.io/github/languages/count/BrunoOliveira16/efood?style=for-the-badge)
-![Status projeto](https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-blue?style=for-the-badge)
 
 ## ✔️ Tecnologias Utilizadas
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
@@ -60,9 +59,3 @@ Para executar este projeto localmente em sua máquina, siga estas etapas:
 
 - ``Styled Components``: Styled Components é uma biblioteca para estilizar componentes React. Neste projeto, Styled Components é usado para escrever CSS em JavaScript, permitindo que os estilos sejam dinâmicos e baseados em props. Isso também ajuda a manter os estilos encapsulados no componente, evitando conflitos de estilo e tornando o código mais limpo.
 
-<br>
-
-## 🙋🏻‍♂️ Autor
-
-| [<img src="https://avatars.githubusercontent.com/u/103857382?v=4" width=115><br><sub>Bruno Oliveira</sub>](https://github.com/BrunoOliveira16) |
-| :---: |
