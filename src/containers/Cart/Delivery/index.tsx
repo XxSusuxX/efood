@@ -378,9 +378,19 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
               themeMode="second"
               kind="button"
               onClick={() => {
-                console.log('Form isValid:', form.isValid)
-                console.log('Form isDirty:', form.dirty)
-                console.log('Form errors:', form.errors)
+                form.setTouched({
+                  receiver: true,
+                  description: true,
+                  city: true,
+                  zipCode: true,
+                  number: true,
+                  complement: true,
+                  name: true,
+                  cardNumber: true,
+                  code: true,
+                  month: true,
+                  year: true
+                })
 
                 if (form.isValid && form.dirty) {
                   setFinalizePayment(true)
