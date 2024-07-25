@@ -48,6 +48,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
       city: Yup.string().required('O campo é obrigatório'),
       zipCode: Yup.string()
         .matches(/^\d{5}-\d{3}$/, 'O CEP deve ter o formato 99999-999')
+        .min(1, 'O número deve ser pelo menos maior que zero')
         .required('O campo é obrigatório'),
       number: Yup.number().required('O campo é obrigatório')
     }),
