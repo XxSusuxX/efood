@@ -47,11 +47,11 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
       description: Yup.string().required('O campo é obrigatório'),
       city: Yup.string().required('O campo é obrigatório'),
       zipCode: Yup.string()
-        .min(8, 'O nome precisa ter pelo menos 8 caracteres')
-        .max(8, 'O campo precisa ter pelo menos 8 caracteres')
+        .matches(/^\d{5}-\d{3}$/, 'O CEP deve ter o formato 99999-999')
         .required('O campo é obrigatório'),
       number: Yup.number().required('O campo é obrigatório')
     }),
+    validateOnMount: true,
     onSubmit: (values) => {
       purchase({
         products: items.map((item) => ({
@@ -118,6 +118,19 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
     return (
       <S.FormContainer>
         <S.InputGroup>
+          <style>
+            {`
+          input[type='number']::-webkit-inner-spin-button,
+          input[type='number']::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          input[type='number'] {
+            -moz-appearance: textfield;
+          }
+        `}
+          </style>
           <label htmlFor="receiver">Quem irá receber</label>
           <input
             type="text"
@@ -128,6 +141,9 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
             onBlur={form.handleBlur}
             className={checkInputHasError('receiver') ? 'error' : ''}
           />
+          {checkInputHasError('receiver') && (
+            <small>{form.errors.receiver}</small>
+          )}
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="description">Endereço</label>
@@ -140,6 +156,9 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
             onBlur={form.handleBlur}
             className={checkInputHasError('description') ? 'error' : ''}
           />
+          {checkInputHasError('description') && (
+            <small>{form.errors.description}</small>
+          )}
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="city">Cidade</label>
@@ -152,6 +171,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
             onBlur={form.handleBlur}
             className={checkInputHasError('city') ? 'error' : ''}
           />
+          {checkInputHasError('city') && <small>{form.errors.city}</small>}
         </S.InputGroup>
         <S.InputContainer>
           <S.InputGroup>
@@ -166,6 +186,9 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
               onBlur={form.handleBlur}
               className={checkInputHasError('zipCode') ? 'error' : ''}
             />
+            {checkInputHasError('zipCode') && (
+              <small>{form.errors.zipCode}</small>
+            )}
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="number">Número</label>
@@ -177,7 +200,11 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
               className={checkInputHasError('number') ? 'error' : ''}
+              min="1"
             />
+            {checkInputHasError('number') && (
+              <small>{form.errors.number}</small>
+            )}
           </S.InputGroup>
         </S.InputContainer>
         <S.InputGroup>
@@ -350,7 +377,15 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
               displayMode="fullWidth"
               themeMode="second"
               kind="button"
-              onClick={() => setFinalizePayment(true)}
+              onClick={() => {
+                console.log('Form isValid:', form.isValid)
+                console.log('Form isDirty:', form.dirty)
+                console.log('Form errors:', form.errors)
+
+                if (form.isValid && form.dirty) {
+                  setFinalizePayment(true)
+                }
+              }}
             />
           )}
 
